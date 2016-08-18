@@ -32,6 +32,50 @@
 		<tns:PartyId tns:type="orgnummer">ORGNR</tns:PartyId>
 		<tns:PartyRef xlink:href="https://www.nav.no/about.html" xlink:type="simple"/>
 		<!-- Collaboration roles Digital dialog reciever-->
+		<tns:CollaborationRole> <!-- CollaborationRole DIALOG_INNBYGGER_TIMER v1.0 -->
+			<tns:ProcessSpecification tns:name="Dialog_Innbygger_Timer" tns:version="1.1" xlink:href="http://www.helsedirektoratet.no/processes/Dialog_Innbygger_Timer.xml" xlink:type="simple" tns:uuid="00D94DA5-D03F-447A-941A-AF2CB1B98ECE"/>
+			<tns:Role tns:name="DIALOG_INNBYGGER_TIMERreceiver" xlink:href="http://www.helsedirektoratet.no/processes#DIALOG_INNBYGGER_TIMERreceiver" xlink:type="simple"/>
+			<tns:ApplicationCertificateRef tns:certId="default_crypt_cert"/>
+			<tns:ServiceBinding>
+				<tns:Service tns:type="string">S-DIALOG_INNBYGGER_TIMER</tns:Service>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_TIMER" tns:id="Dialog_Innbygger_Timer_Sending_Asynk1" tns:packageId="package_timer_v1p0" xlink:type="simple">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+						<tns:ChannelId>asyncAMQPChannelC1</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_TIMER" tns:id="Dialog_Innbygger_Timer_Sending_Synk1" tns:packageId="package_timer_v1p0" xlink:type="simple">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+						<tns:ChannelId>syncAMQPChannelC2</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanSend>
+					<tns:ThisPartyActionBinding tns:action="APPREC" tns:id="Dialog_Innbygger_Timer_A001" tns:packageId="package_apprec_v1p0" xlink:type="simple">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+						<tns:ChannelId>asyncAMQPChannelC1</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+				</tns:CanSend>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_TIMER" tns:id="Dialog_Innbygger_Timer_Mottak_Asynk1" tns:packageId="package_timer_v1p0" xlink:type="simple">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+						<tns:ChannelId>asyncAMQPChannelC1</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+				</tns:CanReceive>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_TIMER" tns:id="Dialog_Innbygger_Timer_Mottak_Synk1" tns:packageId="package_timer_v1p0" xlink:type="simple">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+						<tns:ChannelId>syncAMQPChannelC2</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+				</tns:CanReceive>
+				<tns:CanReceive>
+					<tns:ThisPartyActionBinding tns:action="APPREC" tns:id="Dialog_Innbygger_Timer_A002" tns:packageId="package_apprec_v1p0" xlink:type="simple">
+						<tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+						<tns:ChannelId>asyncAMQPChannelC1</tns:ChannelId>
+					</tns:ThisPartyActionBinding>
+				</tns:CanReceive>
+			</tns:ServiceBinding>
+		</tns:CollaborationRole>
 		<tns:CollaborationRole> <!-- CollaborationRole DIALOG_INNBYGGER_TIMERESERVASJONreceiver v1.1 -->
 			<tns:ProcessSpecification tns:name="Dialog_Innbygger_Timereservasjon" tns:version="1.1" xlink:href="http://www.helsedirektoratet.no/processes/Dialog_Innbygger_Timereservasjon.xml" xlink:type="simple" tns:uuid="7B68B3C8-ADCF-495D-98E1-F2BB1151516E"/>
 			<tns:Role tns:name="DIALOG_INNBYGGER_TIMERESERVASJONreceiver" xlink:href="http://www.helsedirektoratet.no/processes#DIALOG_INNBYGGER_TIMERESERVASJONreceiver" xlink:type="simple"/>
@@ -572,6 +616,11 @@
 	</tns:PartyInfo>
 	
 	<!-- Start: SimplePart elements  -->
+	<tns:SimplePart tns:id="message_dialogmld_v1p0" tns:mimetype="application/xml">
+		<tns:NamespaceSupported tns:location="MsgHead-v1_2.xsd" tns:version="1.2">http://www.kith.no/xmlstds/msghead/2006-05-24</tns:NamespaceSupported>
+		<tns:NamespaceSupported tns:location="dialogmelding-v1.0.xsd" tns:version="1.0">http://www.kith.no/xmlstds/dialog/2006-10-11</tns:NamespaceSupported>
+	</tns:SimplePart>
+
 	<tns:SimplePart tns:id="message_dialogmld_v1p1" tns:mimetype="application/xml">
 		<tns:NamespaceSupported tns:location="MsgHead-v1_2.xsd" tns:version="1.2">http://www.kith.no/xmlstds/msghead/2006-05-24</tns:NamespaceSupported>
 		<tns:NamespaceSupported tns:location="dialogmelding-1.1.xsd" tns:version="1.1">http://www.kith.no/xmlstds/dialog/2013-01-23</tns:NamespaceSupported>
@@ -580,6 +629,10 @@
 	<tns:SimplePart tns:id="message_iCalendar_v2p0" tns:mimetype="application/xml">
 		<tns:NamespaceSupported tns:location="iCalendar.xsd" tns:version="2.0">urn:ietf:params:xml:ns:icalendar-2.0</tns:NamespaceSupported>
 	</tns:SimplePart>
+	<tns:SimplePart tns:id="message_iCalendar_v2p0_referral_extension_v1p0" tns:mimetype="application/xml">
+		<tns:NamespaceSupported tns:location="iCalendar-DigitalDialogSpesialist-extensions.xsd" tns:version="1.0">urn:ietf:params:xml:ns:icalendar-2.0</tns:NamespaceSupported>
+	</tns:SimplePart>
+
 	<tns:SimplePart tns:id="message_pasientrelasjon_v1p0" tns:mimetype="application/xml">
 		<tns:NamespaceSupported tns:location="Pasientrelasjon-2014-03-28.xsd" tns:version="1.0">http://www.kith.no/xmlstds/pasientrelasjon/2014-03-28</tns:NamespaceSupported>
 	</tns:SimplePart>
@@ -592,11 +645,36 @@
 	<tns:SimplePart tns:id="message_helsepersonell_v1p0" tns:mimetype="application/xml">
 		<tns:NamespaceSupported tns:location="helsepersonell-2015-05-04.xsd" tns:version="1.0">http://www.kith.no/xmlstds/helsepersonell/2015-05-04</tns:NamespaceSupported>
 	</tns:SimplePart>
+	<tns:SimplePart tns:id="message_apprec_v1p0" tns:mimetype="application/xml">
+		<tns:NamespaceSupported tns:location="AppRec-v1-2004-11-21.xsd" tns:version="1.0">http://www.kith.no/xmlstds/apprec/2004-11-21</tns:NamespaceSupported>
+	</tns:SimplePart>
 	<tns:SimplePart tns:id="message_apprec_v1p1" tns:mimetype="application/xml">
 		<tns:NamespaceSupported tns:location="AppRec-v1_1.xsd" tns:version="1.1">http://www.kith.no/xmlstds/apprec/2012-02-15</tns:NamespaceSupported>
 	</tns:SimplePart>
 	<!-- End: SimplePart elements  -->
-	
+
+	<!-- Start: Digital Dialog packages v1.0 -->
+	<tns:Packaging tns:id="package_timer_v1p0">
+		<tns:ProcessingCapabilities tns:generate="true" tns:parse="true"/>
+		<tns:CompositeList>
+			<tns:Encapsulation tns:id="enc_timer_dialogmld_v1p0" tns:mimetype="application/pkcs7-mime" tns:mimeparameters="smime-type=&quot;enveloped-data&quot;">
+				<tns:Constituent tns:idref="message_dialogmld_v1p0" />
+			</tns:Encapsulation>
+			<tns:Encapsulation tns:id="enc_timer_iCalendar_v2p0" tns:mimetype="application/pkcs7-mime" tns:mimeparameters="smime-type=&quot;enveloped-data&quot;">
+				<tns:Constituent tns:idref="message_iCalendar_v2p0" />
+			</tns:Encapsulation>
+			<tns:Encapsulation tns:id="enc_timer_iCalendar_v2p0_referral_extension_v1p0" tns:mimetype="application/pkcs7-mime" tns:mimeparameters="smime-type=&quot;enveloped-data&quot;">
+				<tns:Constituent tns:idref="message_iCalendar_v2p0_referral_extension_v1p0" />
+			</tns:Encapsulation>
+			<tns:Composite tns:id="request_msg_timer_v1p0" tns:mimeparameters="type=text/xml" tns:mimetype="multipart/related">
+				<tns:Constituent tns:idref="enc_timer_dialogmld_v1p0" />
+				<tns:Constituent tns:idref="enc_timer_iCalendar_v2p0" tns:minOccurs="0" tns:maxOccurs="1"/>
+				<tns:Constituent tns:idref="enc_timer_iCalendar_v2p0_referral_extension_v1p0" tns:minOccurs="0" tns:maxOccurs="1" />
+			</tns:Composite>
+		</tns:CompositeList>
+	</tns:Packaging>
+	<!-- End: Digital Dialog packages v1.0 -->
+
 	<!-- Start: Digital Dialog packages v1.1 -->
 	<tns:Packaging tns:id="package_dialogmld_v1p1">
 		<tns:ProcessingCapabilities tns:generate="true" tns:parse="true"/>
@@ -740,6 +818,17 @@
 		</tns:CompositeList>
 	</tns:Packaging>
 	<!-- End: Digital Dialog packages v1.2 -->
+	<tns:Packaging tns:id="package_apprec_v1p0">
+		<tns:ProcessingCapabilities tns:generate="true" tns:parse="true"/>
+		<tns:CompositeList>
+			<tns:Encapsulation tns:id="enc_apprec_v1p0" tns:mimetype="application/pkcs7-mime" tns:mimeparameters="smime-type=&quot;enveloped-data&quot;">
+				<tns:Constituent tns:idref="message_apprec_v1p0" tns:excludedFromSignature="false"/>
+			</tns:Encapsulation>
+			<tns:Composite tns:id="msg_apprec_v1p0" tns:mimeparameters="type=text/xml" tns:mimetype="multipart/related">
+				<tns:Constituent tns:idref="enc_apprec_v1p0" tns:excludedFromSignature="false"/>
+			</tns:Composite>
+		</tns:CompositeList>
+	</tns:Packaging>
 
 	<tns:Packaging tns:id="package_apprec_v1p1">
 		<tns:ProcessingCapabilities tns:generate="true" tns:parse="true"/>
