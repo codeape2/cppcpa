@@ -33,7 +33,7 @@
 		<tns:PartyRef xlink:href="https://www.nav.no/about.html" xlink:type="simple"/>
 		<!-- Collaboration roles Digital dialog -->
 		<tns:CollaborationRole> <!-- CollaborationRole DIALOG_INNBYGGER_TIMER v1.0 -->
-			<tns:ProcessSpecification tns:name="Dialog_Innbygger_Timer" tns:version="1.1" xlink:href="http://www.helsedirektoratet.no/processes/Dialog_Innbygger_Timer.xml" xlink:type="simple" tns:uuid="7B68B3C8-ADCF-495D-98E1-F2BB1151516E"/>
+			<tns:ProcessSpecification tns:name="Dialog_Innbygger_Timer" tns:version="1.1" xlink:href="http://www.helsedirektoratet.no/processes/Dialog_Innbygger_Timer.xml" xlink:type="simple" tns:uuid="00D94DA5-D03F-447A-941A-AF2CB1B98ECE"/>
 			<tns:Role tns:name="DIALOG_INNBYGGER_TIMERsender" xlink:href="http://www.helsedirektoratet.no/processes#DIALOG_INNBYGGER_TIMERsender" xlink:type="simple"/>
 			<tns:ApplicationCertificateRef tns:certId="default_crypt_cert"/>
 			<tns:ServiceBinding>
