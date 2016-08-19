@@ -1,0 +1,1 @@
+Lag script for å sjekke unike uuider
