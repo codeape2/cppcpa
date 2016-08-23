@@ -28,9 +28,6 @@ void CompareIDsUsed(XDocument receiverXml, XDocument senderXml)
 	var receiverIdSet = new HashSet<string>(receiverIds);
 	var senderIdSet = new HashSet<string>(senderIds);
 
-	Console.WriteLine($"IDs in receiver.xml: {receiverIds.Count()}");
-	Console.WriteLine($"IDs in sender.xml: {senderIds.Count()}");
-
 	if (senderIdSet.SetEquals(receiverIdSet))
 	{
 		Console.WriteLine("receiver and sender contain exactly the same id elements");
@@ -51,11 +48,8 @@ void CompareIDsUsed(XDocument receiverXml, XDocument senderXml)
 
 void CompareUUIDsUsed(XDocument receiverXml, XDocument senderXml)
 {
-	var receiverUUIDs = GetUUIDsUsed(receiverXml);
-	var senderUUIDs = GetUUIDsUsed(senderXml);
-	
-	var receiverUUIDSet = new HashSet<string>(receiverUUIDs);
-	var senderUUIDSet = new HashSet<string>(senderUUIDs);
+	var receiverUUIDSet = new HashSet<string>(GetUUIDsUsed(receiverXml));
+	var senderUUIDSet = new HashSet<string>(GetUUIDsUsed(senderXml));
 	if (receiverUUIDSet.SetEquals(senderUUIDSet))
 	{
 		Console.WriteLine("Receiver and sender contains exactly same UUIDs");
@@ -66,17 +60,32 @@ void CompareUUIDsUsed(XDocument receiverXml, XDocument senderXml)
 		(from id in senderUUIDSet where !receiverUUIDSet.Contains(id) select id).Dump("In sender, not in receiver");
 	}
 
-	FindDuplicates(receiverUUIDs).Dump("Duplicate UUIDs in receiver.xml");
-	FindDuplicates(senderUUIDs).Dump("Duplicate UUIDs in sender.xml");
+	FindDuplicates(GetUUIDsUsed(receiverXml, includeVersion: true)).Dump("Duplicate version/UUIDs in receiver.xml");
+	FindDuplicates(GetUUIDsUsed(senderXml, includeVersion: true)).Dump("Duplicate version/UUIDs in sender.xml");
+
+	FindSameUUIDButDifferentName(receiverXml, "receiver.xml");
+	FindSameUUIDButDifferentName(senderXml, "sender.xml");
 }
 
-IEnumerable<string> GetUUIDsUsed(XDocument xdoc)
+void FindSameUUIDButDifferentName(XDocument xDoc, string filename)
+{
+	var withUUID =
+		from element in xDoc.Descendants()
+		where element.Attribute(tns + "uuid") != null
+		group element by element.Attribute(tns + "uuid").Value into grouping
+		where grouping.Count() > 1 && (from ge in grouping select ge.Attribute(tns + "name").Value).Distinct().Count() > 1
+		select new { uuid = grouping.Key, names = (from ge in grouping select ge.Attribute(tns + "name").Value) };
+	withUUID.Dump($"Same UUID but different name ({filename})");
+
+}
+
+IEnumerable<string> GetUUIDsUsed(XDocument xdoc, bool includeVersion = false)
 {
 	return
 		from element in xdoc.Descendants()
 		where element.Attribute(tns + "uuid") != null
 		select
-			element.Attribute(tns + "uuid").Value;
+			(includeVersion ? element.Attribute(tns + "version").Value : "") + element.Attribute(tns + "uuid").Value;
 }
 
 
