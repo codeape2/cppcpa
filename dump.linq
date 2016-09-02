@@ -19,10 +19,36 @@ void Main()
 void DumpCPP(XDocument xdoc, string title)
 {
 	title.Dump();
-	var collaborationRoles = 
+	DumpProcSpecsAndRoles(xdoc);
+	DumpSimpleParts(xdoc);
+}
+
+void DumpSimpleParts(XDocument xdoc)
+{
+	var simpleParts =
+		from element in xdoc.Descendants(tns + "SimplePart")
+		select
+			new
+			{
+				Id = element.Attribute(tns + "id").Value,
+				MimeType = element.Attribute(tns + "mimetype").Value,
+				Namespaces = from ns in element.Descendants(tns + "NamespaceSupported")
+							 select new
+							 {
+							 	Location = ns.Attribute(tns + "location").Value,
+								Version = ns.Attribute(tns + "version").Value,
+							 	Namespace = ns.Value
+							 }
+			};
+	simpleParts.Dump();
+}
+
+void DumpProcSpecsAndRoles(XDocument xdoc)
+{
+	var collaborationRoles =
 		from element in xdoc.Descendants(tns + "CollaborationRole")
 		let ps = element.Descendants(tns + "ProcessSpecification").Single()
-		select 
+		select
 			new
 			{
 				ProcessSpecificationName = ps.Attribute(tns + "name").Value,
