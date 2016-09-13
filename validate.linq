@@ -21,6 +21,7 @@ Dictionary<string, string> namespaces = new Dictionary<string, string>
 	["http://www.oasis-open.org/committees/ebxml-cppa/schema/cpp-cpa-2_0.xsd"] = "cpp-cpa-2_0.xsd",
 	["http://www.w3.org/XML/1998/namespace"] = "xml.xsd",
 	["http://www.w3.org/2000/09/xmldsig#"] = "xmldsig-core-schema.xsd",
+	["http://www.w3.org/1999/xlink"] = "xlink.xsd"
 };
 
 void Main()
