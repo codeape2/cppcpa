@@ -672,10 +672,11 @@
             <tns:ChannelId>syncAMQPChannelC2</tns:ChannelId>
           </tns:ThisPartyActionBinding>
         </tns:CanSend>
-        <tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_FINN_DOKUMENTER" tns:id="Dialog_Innbygger_Finn_Dokumenter_Mottak_Asynk1" tns:packageId="package_dialogmld_v1p0" xlink:type="simple">
-          <tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
-          <tns:ChannelId>asyncAMQPChannelC1</tns:ChannelId>
-        </tns:ThisPartyActionBinding>
+        <tns:CanReceive>
+          <tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_FINN_DOKUMENTER" tns:id="Dialog_Innbygger_Finn_Dokumenter_Mottak_Asynk1" tns:packageId="package_dialogmld_v1p0" xlink:type="simple">
+            <tns:BusinessTransactionCharacteristics tns:isAuthenticated="none" tns:isAuthorizationRequired="false" tns:isConfidential="none" tns:isIntelligibleCheckRequired="false" tns:isNonRepudiationReceiptRequired="true" tns:isNonRepudiationRequired="true" tns:isTamperProof="none" tns:timeToPerform="P180M"/>
+            <tns:ChannelId>asyncAMQPChannelC1</tns:ChannelId>
+          </tns:ThisPartyActionBinding>
         </tns:CanReceive>
         <tns:CanReceive>
           <tns:ThisPartyActionBinding tns:action="DIALOG_INNBYGGER_FINN_DOKUMENTER" tns:id="Dialog_Innbygger_Finn_Dokumenter_Mottak_Synk1" tns:packageId="package_dialogmld_v1p0" xlink:type="simple">
